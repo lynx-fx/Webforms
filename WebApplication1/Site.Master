@@ -51,10 +51,10 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/user">User</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/booking">Booking</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/ticket">Ticket</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/show">Show</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/movies">Movies</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/theatercityhall">Threater City Hall</a></li>
 
                     </ul>
                 </div>

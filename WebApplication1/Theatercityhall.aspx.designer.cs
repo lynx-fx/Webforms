@@ -11,7 +11,7 @@ namespace WebApplication1
 {
 
 
-    public partial class booking
+    public partial class Theatercityhall
     {
 
         /// <summary>

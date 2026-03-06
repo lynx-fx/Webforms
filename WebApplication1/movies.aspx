@@ -26,6 +26,7 @@
                             <asp:BoundField DataField="MOVIE_DURATION" HeaderText="MOVIE_DURATION" SortExpression="MOVIE_DURATION" />
                             <asp:BoundField DataField="MOVIE_LANGUAGE" HeaderText="MOVIE_LANGUAGE" SortExpression="MOVIE_LANGUAGE" />
                             <asp:BoundField DataField="MOVIE_GENRE" HeaderText="MOVIE_GENRE" SortExpression="MOVIE_GENRE" />
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -36,7 +37,25 @@
                         <SortedDescendingCellStyle BackColor="#E5E5E5" />
                         <SortedDescendingHeaderStyle BackColor="#242121" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;MOVIE&quot;"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;MOVIE&quot;" DeleteCommand="DELETE FROM &quot;MOVIE&quot; WHERE &quot;MOVIE_ID&quot; = :MOVIE_ID" InsertCommand="INSERT INTO &quot;MOVIE&quot; (&quot;MOVIE_ID&quot;, &quot;MOVIE_TITLE&quot;, &quot;MOVIE_DURATION&quot;, &quot;MOVIE_LANGUAGE&quot;, &quot;MOVIE_GENRE&quot;) VALUES (:MOVIE_ID, :MOVIE_TITLE, :MOVIE_DURATION, :MOVIE_LANGUAGE, :MOVIE_GENRE)" UpdateCommand="UPDATE &quot;MOVIE&quot; SET &quot;MOVIE_TITLE&quot; = :MOVIE_TITLE, &quot;MOVIE_DURATION&quot; = :MOVIE_DURATION, &quot;MOVIE_LANGUAGE&quot; = :MOVIE_LANGUAGE, &quot;MOVIE_GENRE&quot; = :MOVIE_GENRE WHERE &quot;MOVIE_ID&quot; = :MOVIE_ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="MOVIE_ID" Type="Decimal" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="MOVIE_ID" Type="Decimal" />
+                            <asp:Parameter Name="MOVIE_TITLE" Type="String" />
+                            <asp:Parameter Name="MOVIE_DURATION" Type="Decimal" />
+                            <asp:Parameter Name="MOVIE_LANGUAGE" Type="String" />
+                            <asp:Parameter Name="MOVIE_GENRE" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="MOVIE_TITLE" Type="String" />
+                            <asp:Parameter Name="MOVIE_DURATION" Type="Decimal" />
+                            <asp:Parameter Name="MOVIE_LANGUAGE" Type="String" />
+                            <asp:Parameter Name="MOVIE_GENRE" Type="String" />
+                            <asp:Parameter Name="MOVIE_ID" Type="Decimal" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <asp:SqlDataSource ID="Booking" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;BOOKING&quot;" DeleteCommand="DELETE FROM &quot;BOOKING&quot; WHERE &quot;BOOKING_ID&quot; = :BOOKING_ID" InsertCommand="INSERT INTO &quot;BOOKING&quot; (&quot;BOOKING_ID&quot;, &quot;MOVIE_ID&quot;, &quot;BOOKING_DATE&quot;, &quot;BOOKING_TYPE&quot;, &quot;USER_ID&quot;, &quot;SHOW_ID&quot;) VALUES (:BOOKING_ID, :MOVIE_ID, :BOOKING_DATE, :BOOKING_TYPE, :USER_ID, :SHOW_ID)" UpdateCommand="UPDATE &quot;BOOKING&quot; SET &quot;MOVIE_ID&quot; = :MOVIE_ID, &quot;BOOKING_DATE&quot; = :BOOKING_DATE, &quot;BOOKING_TYPE&quot; = :BOOKING_TYPE, &quot;USER_ID&quot; = :USER_ID, &quot;SHOW_ID&quot; = :SHOW_ID WHERE &quot;BOOKING_ID&quot; = :BOOKING_ID">
                         <DeleteParameters>
                             <asp:Parameter Name="BOOKING_ID" Type="Decimal" />

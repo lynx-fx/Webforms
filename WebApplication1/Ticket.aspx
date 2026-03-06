@@ -19,7 +19,22 @@
                 </p>
                 <p>
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TICKET_ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" DeleteCommand="DELETE FROM &quot;USERS&quot; WHERE &quot;USER_ID&quot; = :USER_ID" InsertCommand="INSERT INTO &quot;USERS&quot; (&quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_ADDRESS&quot;) VALUES (:USER_ID, :USER_NAME, :USER_ADDRESS)" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;USERS&quot;" UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="USER_ID" Type="Decimal" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="USER_ID" Type="Decimal" />
+                            <asp:Parameter Name="USER_NAME" Type="String" />
+                            <asp:Parameter Name="USER_ADDRESS" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="USER_NAME" Type="String" />
+                            <asp:Parameter Name="USER_ADDRESS" Type="String" />
+                            <asp:Parameter Name="USER_ID" Type="Decimal" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TICKET_ID" DataSourceID="SqlDataSource2" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                         <Columns>
                             <asp:BoundField DataField="TICKET_ID" HeaderText="TICKET_ID" ReadOnly="True" SortExpression="TICKET_ID" />
                             <asp:BoundField DataField="BOOKING_ID" HeaderText="BOOKING_ID" SortExpression="BOOKING_ID" />
@@ -34,7 +49,7 @@
                         <SortedDescendingCellStyle BackColor="#E5E5E5" />
                         <SortedDescendingHeaderStyle BackColor="#242121" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" DeleteCommand="DELETE FROM &quot;TICKET&quot; WHERE &quot;TICKET_ID&quot; = :TICKET_ID" InsertCommand="INSERT INTO &quot;TICKET&quot; (&quot;TICKET_ID&quot;, &quot;BOOKING_ID&quot;) VALUES (:TICKET_ID, :BOOKING_ID)" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;TICKET&quot;" UpdateCommand="UPDATE &quot;TICKET&quot; SET &quot;BOOKING_ID&quot; = :BOOKING_ID WHERE &quot;TICKET_ID&quot; = :TICKET_ID">
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" DeleteCommand="DELETE FROM &quot;TICKET&quot; WHERE &quot;TICKET_ID&quot; = :TICKET_ID" InsertCommand="INSERT INTO &quot;TICKET&quot; (&quot;TICKET_ID&quot;, &quot;BOOKING_ID&quot;) VALUES (:TICKET_ID, :BOOKING_ID)" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;TICKET&quot;" UpdateCommand="UPDATE &quot;TICKET&quot; SET &quot;BOOKING_ID&quot; = :BOOKING_ID WHERE &quot;TICKET_ID&quot; = :TICKET_ID">
                         <DeleteParameters>
                             <asp:Parameter Name="TICKET_ID" Type="Decimal" />
                         </DeleteParameters>
@@ -48,7 +63,6 @@
                         </UpdateParameters>
                     </asp:SqlDataSource>
                 </p>
-            </section>
             <section class="col-md-4" aria-labelledby="librariesTitle">
                 <h2 id="librariesTitle">Get more libraries</h2>
                 <p>
@@ -57,6 +71,7 @@
                 <p>
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
                 </p>
+            </section>
             </section>
             <section class="col-md-4" aria-labelledby="hostingTitle">
                 <h2 id="hostingTitle">Web Hosting</h2>

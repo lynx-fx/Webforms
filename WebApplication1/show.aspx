@@ -27,6 +27,7 @@
                             <asp:BoundField DataField="MOVIE_ID" HeaderText="MOVIE_ID" SortExpression="MOVIE_ID" />
                             <asp:BoundField DataField="HALL_ID" HeaderText="HALL_ID" SortExpression="HALL_ID" />
                             <asp:BoundField DataField="PRICE_ID" HeaderText="PRICE_ID" SortExpression="PRICE_ID" />
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -37,26 +38,25 @@
                         <SortedDescendingCellStyle BackColor="#E5E5E5" />
                         <SortedDescendingHeaderStyle BackColor="#242121" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;SHOW&quot;"></asp:SqlDataSource>
-                    <asp:SqlDataSource ID="Booking" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;BOOKING&quot;" DeleteCommand="DELETE FROM &quot;BOOKING&quot; WHERE &quot;BOOKING_ID&quot; = :BOOKING_ID" InsertCommand="INSERT INTO &quot;BOOKING&quot; (&quot;BOOKING_ID&quot;, &quot;MOVIE_ID&quot;, &quot;BOOKING_DATE&quot;, &quot;BOOKING_TYPE&quot;, &quot;USER_ID&quot;, &quot;SHOW_ID&quot;) VALUES (:BOOKING_ID, :MOVIE_ID, :BOOKING_DATE, :BOOKING_TYPE, :USER_ID, :SHOW_ID)" UpdateCommand="UPDATE &quot;BOOKING&quot; SET &quot;MOVIE_ID&quot; = :MOVIE_ID, &quot;BOOKING_DATE&quot; = :BOOKING_DATE, &quot;BOOKING_TYPE&quot; = :BOOKING_TYPE, &quot;USER_ID&quot; = :USER_ID, &quot;SHOW_ID&quot; = :SHOW_ID WHERE &quot;BOOKING_ID&quot; = :BOOKING_ID">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;SHOW&quot;" DeleteCommand="DELETE FROM &quot;SHOW&quot; WHERE &quot;SHOW_ID&quot; = :SHOW_ID" InsertCommand="INSERT INTO &quot;SHOW&quot; (&quot;SHOW_ID&quot;, &quot;SHOW_TIME&quot;, &quot;SHOW_DATE&quot;, &quot;MOVIE_ID&quot;, &quot;HALL_ID&quot;, &quot;PRICE_ID&quot;) VALUES (:SHOW_ID, :SHOW_TIME, :SHOW_DATE, :MOVIE_ID, :HALL_ID, :PRICE_ID)" UpdateCommand="UPDATE &quot;SHOW&quot; SET &quot;SHOW_TIME&quot; = :SHOW_TIME, &quot;SHOW_DATE&quot; = :SHOW_DATE, &quot;MOVIE_ID&quot; = :MOVIE_ID, &quot;HALL_ID&quot; = :HALL_ID, &quot;PRICE_ID&quot; = :PRICE_ID WHERE &quot;SHOW_ID&quot; = :SHOW_ID">
                         <DeleteParameters>
-                            <asp:Parameter Name="BOOKING_ID" Type="Decimal" />
+                            <asp:Parameter Name="SHOW_ID" Type="Decimal" />
                         </DeleteParameters>
                         <InsertParameters>
-                            <asp:Parameter Name="BOOKING_ID" Type="Decimal" />
-                            <asp:Parameter Name="MOVIE_ID" Type="Decimal" />
-                            <asp:Parameter Name="BOOKING_DATE" Type="DateTime" />
-                            <asp:Parameter Name="BOOKING_TYPE" Type="String" />
-                            <asp:Parameter Name="USER_ID" Type="Decimal" />
                             <asp:Parameter Name="SHOW_ID" Type="Decimal" />
+                            <asp:Parameter Name="SHOW_TIME" Type="DateTime" />
+                            <asp:Parameter Name="SHOW_DATE" Type="DateTime" />
+                            <asp:Parameter Name="MOVIE_ID" Type="Decimal" />
+                            <asp:Parameter Name="HALL_ID" Type="Decimal" />
+                            <asp:Parameter Name="PRICE_ID" Type="Decimal" />
                         </InsertParameters>
                         <UpdateParameters>
+                            <asp:Parameter Name="SHOW_TIME" Type="DateTime" />
+                            <asp:Parameter Name="SHOW_DATE" Type="DateTime" />
                             <asp:Parameter Name="MOVIE_ID" Type="Decimal" />
-                            <asp:Parameter Name="BOOKING_DATE" Type="DateTime" />
-                            <asp:Parameter Name="BOOKING_TYPE" Type="String" />
-                            <asp:Parameter Name="USER_ID" Type="Decimal" />
+                            <asp:Parameter Name="HALL_ID" Type="Decimal" />
+                            <asp:Parameter Name="PRICE_ID" Type="Decimal" />
                             <asp:Parameter Name="SHOW_ID" Type="Decimal" />
-                            <asp:Parameter Name="BOOKING_ID" Type="Decimal" />
                         </UpdateParameters>
                     </asp:SqlDataSource>
                 </p>
