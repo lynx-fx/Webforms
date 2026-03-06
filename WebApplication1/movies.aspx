@@ -19,15 +19,13 @@
                 </p>
                 <p>
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="BOOKING_ID" DataSourceID="Booking" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="MOVIE_ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                         <Columns>
-                            <asp:BoundField DataField="BOOKING_ID" HeaderText="BOOKING_ID" ReadOnly="True" SortExpression="BOOKING_ID" />
-                            <asp:BoundField DataField="MOVIE_ID" HeaderText="MOVIE_ID" SortExpression="MOVIE_ID" />
-                            <asp:BoundField DataField="BOOKING_DATE" HeaderText="BOOKING_DATE" SortExpression="BOOKING_DATE" />
-                            <asp:BoundField DataField="BOOKING_TYPE" HeaderText="BOOKING_TYPE" SortExpression="BOOKING_TYPE" />
-                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" SortExpression="USER_ID" />
-                            <asp:BoundField DataField="SHOW_ID" HeaderText="SHOW_ID" SortExpression="SHOW_ID" />
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                            <asp:BoundField DataField="MOVIE_ID" HeaderText="MOVIE_ID" ReadOnly="True" SortExpression="MOVIE_ID" />
+                            <asp:BoundField DataField="MOVIE_TITLE" HeaderText="MOVIE_TITLE" SortExpression="MOVIE_TITLE" />
+                            <asp:BoundField DataField="MOVIE_DURATION" HeaderText="MOVIE_DURATION" SortExpression="MOVIE_DURATION" />
+                            <asp:BoundField DataField="MOVIE_LANGUAGE" HeaderText="MOVIE_LANGUAGE" SortExpression="MOVIE_LANGUAGE" />
+                            <asp:BoundField DataField="MOVIE_GENRE" HeaderText="MOVIE_GENRE" SortExpression="MOVIE_GENRE" />
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -38,6 +36,7 @@
                         <SortedDescendingCellStyle BackColor="#E5E5E5" />
                         <SortedDescendingHeaderStyle BackColor="#242121" />
                     </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;MOVIE&quot;"></asp:SqlDataSource>
                     <asp:SqlDataSource ID="Booking" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;BOOKING&quot;" DeleteCommand="DELETE FROM &quot;BOOKING&quot; WHERE &quot;BOOKING_ID&quot; = :BOOKING_ID" InsertCommand="INSERT INTO &quot;BOOKING&quot; (&quot;BOOKING_ID&quot;, &quot;MOVIE_ID&quot;, &quot;BOOKING_DATE&quot;, &quot;BOOKING_TYPE&quot;, &quot;USER_ID&quot;, &quot;SHOW_ID&quot;) VALUES (:BOOKING_ID, :MOVIE_ID, :BOOKING_DATE, :BOOKING_TYPE, :USER_ID, :SHOW_ID)" UpdateCommand="UPDATE &quot;BOOKING&quot; SET &quot;MOVIE_ID&quot; = :MOVIE_ID, &quot;BOOKING_DATE&quot; = :BOOKING_DATE, &quot;BOOKING_TYPE&quot; = :BOOKING_TYPE, &quot;USER_ID&quot; = :USER_ID, &quot;SHOW_ID&quot; = :SHOW_ID WHERE &quot;BOOKING_ID&quot; = :BOOKING_ID">
                         <DeleteParameters>
                             <asp:Parameter Name="BOOKING_ID" Type="Decimal" />
