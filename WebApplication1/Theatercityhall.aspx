@@ -1,41 +1,23 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1._Default" %>
+﻿<%@ Page Title="Theater & City Hall Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="Theatercityhall.aspx.cs" Inherits="WebApplication1.Theatercityhall" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="d-flex align-items-center mb-4 border-bottom pb-2">
+            <h2 class="text-dark m-0"><i class="bi bi-building me-2"></i> Location Management</h2>
+        </div>
 
-    &nbsp;&nbsp;&nbsp;
-    <main>
-        <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-        </section>
+        <div class="card shadow-sm border">
+            <div class="card-body">
+                <p class="text-secondary mb-4 small">Manage theater branches and official city hall venues associated
+                    with cinema events and screenings.</p>
 
-        <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
-                <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="THEATER_CITY_HALL_ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
-                        <Columns>
-                            <asp:BoundField DataField="THEATER_CITY_HALL_ID" HeaderText="THEATER_CITY_HALL_ID" ReadOnly="True" SortExpression="THEATER_CITY_HALL_ID" />
-                            <asp:BoundField DataField="THEATER_COMPANY_ID" HeaderText="THEATER_COMPANY_ID" SortExpression="THEATER_COMPANY_ID" />
-                            <asp:BoundField DataField="THEATER_CITY_HALL_NAME" HeaderText="THEATER_CITY_HALL_NAME" SortExpression="THEATER_CITY_HALL_NAME" />
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
-                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                        <SortedDescendingHeaderStyle BackColor="#242121" />
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;THEATER_CITY_HALL&quot;" DeleteCommand="DELETE FROM &quot;THEATER_CITY_HALL&quot; WHERE &quot;THEATER_CITY_HALL_ID&quot; = :THEATER_CITY_HALL_ID" InsertCommand="INSERT INTO &quot;THEATER_CITY_HALL&quot; (&quot;THEATER_CITY_HALL_ID&quot;, &quot;THEATER_COMPANY_ID&quot;, &quot;THEATER_CITY_HALL_NAME&quot;) VALUES (:THEATER_CITY_HALL_ID, :THEATER_COMPANY_ID, :THEATER_CITY_HALL_NAME)" UpdateCommand="UPDATE &quot;THEATER_CITY_HALL&quot; SET &quot;THEATER_COMPANY_ID&quot; = :THEATER_COMPANY_ID, &quot;THEATER_CITY_HALL_NAME&quot; = :THEATER_CITY_HALL_NAME WHERE &quot;THEATER_CITY_HALL_ID&quot; = :THEATER_CITY_HALL_ID">
+                <div class="table-responsive">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>"
+                        ProviderName="<%$ ConnectionStrings:cw.ProviderName %>"
+                        SelectCommand="SELECT * FROM &quot;THEATER_CITY_HALL&quot;"
+                        DeleteCommand="DELETE FROM &quot;THEATER_CITY_HALL&quot; WHERE &quot;THEATER_CITY_HALL_ID&quot; = :THEATER_CITY_HALL_ID"
+                        InsertCommand="INSERT INTO &quot;THEATER_CITY_HALL&quot; (&quot;THEATER_CITY_HALL_ID&quot;, &quot;THEATER_COMPANY_ID&quot;, &quot;THEATER_CITY_HALL_NAME&quot;) VALUES (:THEATER_CITY_HALL_ID, :THEATER_COMPANY_ID, :THEATER_CITY_HALL_NAME)"
+                        UpdateCommand="UPDATE &quot;THEATER_CITY_HALL&quot; SET &quot;THEATER_COMPANY_ID&quot; = :THEATER_COMPANY_ID, &quot;THEATER_CITY_HALL_NAME&quot; = :THEATER_CITY_HALL_NAME WHERE &quot;THEATER_CITY_HALL_ID&quot; = :THEATER_CITY_HALL_ID">
                         <DeleteParameters>
                             <asp:Parameter Name="THEATER_CITY_HALL_ID" Type="Decimal" />
                         </DeleteParameters>
@@ -50,27 +32,86 @@
                             <asp:Parameter Name="THEATER_CITY_HALL_ID" Type="Decimal" />
                         </UpdateParameters>
                     </asp:SqlDataSource>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
-                <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-                </p>
-            </section>
-        </div>
-    </main>
 
-</asp:Content>
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
+                        DataKeyNames="THEATER_CITY_HALL_ID" DataSourceID="SqlDataSource1" AllowPaging="True"
+                        CssClass="table table-hover table-bordered align-middle" GridLines="None" PageSize="10">
+                        <Columns>
+                            <asp:BoundField DataField="THEATER_CITY_HALL_ID" HeaderText="Venue ID" ReadOnly="True"
+                                SortExpression="THEATER_CITY_HALL_ID">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="THEATER_COMPANY_ID" HeaderText="Company Ref"
+                                SortExpression="THEATER_COMPANY_ID">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="THEATER_CITY_HALL_NAME" HeaderText="Branch Name / Location"
+                                SortExpression="THEATER_CITY_HALL_NAME">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True"
+                                ControlStyle-CssClass="btn btn-sm btn-outline-dark me-1" ButtonType="Button">
+                                <HeaderStyle CssClass="bg-light text-dark text-center" Width="180px" />
+                                <ItemStyle CssClass="text-center" />
+                            </asp:CommandField>
+                        </Columns>
+                        <PagerStyle CssClass="pagination-neutral" HorizontalAlign="Center" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-secondary text-center mt-3" role="alert">
+                                No venue records found in the database.
+                            </div>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .pagination-neutral {
+                display: inline-block;
+                padding-left: 0;
+                margin: 20px 0;
+            }
+
+            .pagination-neutral table>tbody>tr>td {
+                display: inline;
+            }
+
+            .pagination-neutral table>tbody>tr>td>a,
+            .pagination-neutral table>tbody>tr>td>span {
+                position: relative;
+                float: left;
+                padding: 8px 14px;
+                margin-left: -1px;
+                line-height: 1.5;
+                color: #212529;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+                font-size: 0.9rem;
+            }
+
+            .pagination-neutral table>tbody>tr>td>span {
+                z-index: 3;
+                color: #fff;
+                background-color: #212529;
+                border-color: #212529;
+                cursor: default;
+            }
+
+            .pagination-neutral table>tbody>tr>td>a:hover {
+                color: #000;
+                background-color: #f8f9fa;
+                border-color: #dee2e6;
+            }
+
+            .table thead th {
+                border-top: 0;
+                border-bottom: 2px solid #dee2e6;
+            }
+
+            .btn-sm {
+                font-size: 0.82rem;
+            }
+        </style>
+    </asp:Content>

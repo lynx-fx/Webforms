@@ -1,25 +1,23 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1._Default" %>
+﻿<%@ Page Title="User Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="User.aspx.cs" Inherits="WebApplication1.User" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="d-flex align-items-center mb-4 border-bottom pb-2">
+            <h2 class="text-dark m-0"><i class="bi bi-people me-2"></i> User Directory</h2>
+        </div>
 
-    &nbsp;&nbsp;&nbsp;
-    <main>
-        <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-        </section>
+        <div class="card shadow-sm border">
+            <div class="card-body">
+                <p class="text-secondary mb-4 small">Manage system users, staff, and account details. Use the table
+                    controls to edit or remove entries.</p>
 
-        <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
-                <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" DeleteCommand="DELETE FROM &quot;USERS&quot; WHERE &quot;USER_ID&quot; = :USER_ID" InsertCommand="INSERT INTO &quot;USERS&quot; (&quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_ADDRESS&quot;) VALUES (:USER_ID, :USER_NAME, :USER_ADDRESS)" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;USERS&quot;" UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID">
+                <div class="table-responsive">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>"
+                        DeleteCommand="DELETE FROM &quot;USERS&quot; WHERE &quot;USER_ID&quot; = :USER_ID"
+                        InsertCommand="INSERT INTO &quot;USERS&quot; (&quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_ADDRESS&quot;) VALUES (:USER_ID, :USER_NAME, :USER_ADDRESS)"
+                        ProviderName="<%$ ConnectionStrings:cw.ProviderName %>"
+                        SelectCommand="SELECT * FROM &quot;USERS&quot;"
+                        UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID">
                         <DeleteParameters>
                             <asp:Parameter Name="USER_ID" Type="Decimal" />
                         </DeleteParameters>
@@ -34,44 +32,88 @@
                             <asp:Parameter Name="USER_ID" Type="Decimal" />
                         </UpdateParameters>
                     </asp:SqlDataSource>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID"
+                        DataSourceID="SqlDataSource1" AllowPaging="True"
+                        CssClass="table table-hover table-bordered align-middle" GridLines="None" PageSize="10">
                         <Columns>
-                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" />
-                            <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" />
-                            <asp:BoundField DataField="USER_ADDRESS" HeaderText="USER_ADDRESS" SortExpression="USER_ADDRESS" />
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-
+                            <asp:BoundField DataField="USER_ID" HeaderText="ID" ReadOnly="True"
+                                SortExpression="USER_ID">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="USER_NAME" HeaderText="User Name" SortExpression="USER_NAME">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="USER_ADDRESS" HeaderText="Location / Address"
+                                SortExpression="USER_ADDRESS">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold" />
+                            </asp:BoundField>
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True"
+                                ControlStyle-CssClass="btn btn-sm btn-outline-dark me-1" ButtonType="Button">
+                                <HeaderStyle CssClass="bg-light text-dark text-center" Width="180px" />
+                                <ItemStyle CssClass="text-center" />
+                            </asp:CommandField>
                         </Columns>
-                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
-                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                        <SortedDescendingHeaderStyle BackColor="#242121" />
+                        <PagerStyle CssClass="pagination-neutral" HorizontalAlign="Center" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-secondary text-center mt-3" role="alert">
+                                No user records currently available.
+                            </div>
+                        </EmptyDataTemplate>
                     </asp:GridView>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
-                <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-                </p>
-            </section>
+                </div>
+            </div>
         </div>
-    </main>
 
-</asp:Content>
+        <style>
+            .pagination-neutral {
+                display: inline-block;
+                padding-left: 0;
+                margin: 20px 0;
+            }
+
+            .pagination-neutral table>tbody>tr>td {
+                display: inline;
+            }
+
+            .pagination-neutral table>tbody>tr>td>a,
+            .pagination-neutral table>tbody>tr>td>span {
+                position: relative;
+                float: left;
+                padding: 8px 14px;
+                margin-left: -1px;
+                line-height: 1.5;
+                color: #212529;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+                font-size: 0.9rem;
+            }
+
+            .pagination-neutral table>tbody>tr>td>span {
+                z-index: 3;
+                color: #fff;
+                background-color: #212529;
+                border-color: #212529;
+                cursor: default;
+            }
+
+            .pagination-neutral table>tbody>tr>td>a:hover {
+                color: #000;
+                background-color: #f8f9fa;
+                border-color: #dee2e6;
+            }
+
+            .table thead th {
+                border-top: 0;
+                border-bottom: 2px solid #dee2e6;
+                font-size: 0.9rem;
+                letter-spacing: 0.5px;
+            }
+
+            .btn-sm {
+                font-size: 0.8rem;
+                padding: 0.25rem 0.6rem;
+            }
+        </style>
+    </asp:Content>

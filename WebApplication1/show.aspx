@@ -1,44 +1,23 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1._Default" %>
+﻿<%@ Page Title="Shows Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="show.aspx.cs" Inherits="WebApplication1.show" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <div class="d-flex align-items-center mb-4 border-bottom pb-2">
+            <h2 class="text-dark m-0"><i class="bi bi-camera-reels me-2"></i> Show Scheduling</h2>
+        </div>
 
-    &nbsp;&nbsp;&nbsp;
-    <main>
-        <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-        </section>
+        <div class="card shadow-sm border">
+            <div class="card-body">
+                <p class="text-secondary mb-4 small">Configure cinema showtimes and scheduling across all available
+                    halls. Manage movie IDs and pricing tiers below.</p>
 
-        <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
-                <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="SHOW_ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
-                        <Columns>
-                            <asp:BoundField DataField="SHOW_ID" HeaderText="SHOW_ID" ReadOnly="True" SortExpression="SHOW_ID" />
-                            <asp:BoundField DataField="SHOW_TIME" HeaderText="SHOW_TIME" SortExpression="SHOW_TIME" />
-                            <asp:BoundField DataField="SHOW_DATE" HeaderText="SHOW_DATE" SortExpression="SHOW_DATE" />
-                            <asp:BoundField DataField="MOVIE_ID" HeaderText="MOVIE_ID" SortExpression="MOVIE_ID" />
-                            <asp:BoundField DataField="HALL_ID" HeaderText="HALL_ID" SortExpression="HALL_ID" />
-                            <asp:BoundField DataField="PRICE_ID" HeaderText="PRICE_ID" SortExpression="PRICE_ID" />
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                        </Columns>
-                        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-                        <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                        <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
-                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                        <SortedDescendingHeaderStyle BackColor="#242121" />
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT * FROM &quot;SHOW&quot;" DeleteCommand="DELETE FROM &quot;SHOW&quot; WHERE &quot;SHOW_ID&quot; = :SHOW_ID" InsertCommand="INSERT INTO &quot;SHOW&quot; (&quot;SHOW_ID&quot;, &quot;SHOW_TIME&quot;, &quot;SHOW_DATE&quot;, &quot;MOVIE_ID&quot;, &quot;HALL_ID&quot;, &quot;PRICE_ID&quot;) VALUES (:SHOW_ID, :SHOW_TIME, :SHOW_DATE, :MOVIE_ID, :HALL_ID, :PRICE_ID)" UpdateCommand="UPDATE &quot;SHOW&quot; SET &quot;SHOW_TIME&quot; = :SHOW_TIME, &quot;SHOW_DATE&quot; = :SHOW_DATE, &quot;MOVIE_ID&quot; = :MOVIE_ID, &quot;HALL_ID&quot; = :HALL_ID, &quot;PRICE_ID&quot; = :PRICE_ID WHERE &quot;SHOW_ID&quot; = :SHOW_ID">
+                <div class="table-responsive">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>"
+                        ProviderName="<%$ ConnectionStrings:cw.ProviderName %>"
+                        SelectCommand="SELECT * FROM &quot;SHOW&quot;"
+                        DeleteCommand="DELETE FROM &quot;SHOW&quot; WHERE &quot;SHOW_ID&quot; = :SHOW_ID"
+                        InsertCommand="INSERT INTO &quot;SHOW&quot; (&quot;SHOW_ID&quot;, &quot;SHOW_TIME&quot;, &quot;SHOW_DATE&quot;, &quot;MOVIE_ID&quot;, &quot;HALL_ID&quot;, &quot;PRICE_ID&quot;) VALUES (:SHOW_ID, :SHOW_TIME, :SHOW_DATE, :MOVIE_ID, :HALL_ID, :PRICE_ID)"
+                        UpdateCommand="UPDATE &quot;SHOW&quot; SET &quot;SHOW_TIME&quot; = :SHOW_TIME, &quot;SHOW_DATE&quot; = :SHOW_DATE, &quot;MOVIE_ID&quot; = :MOVIE_ID, &quot;HALL_ID&quot; = :HALL_ID, &quot;PRICE_ID&quot; = :PRICE_ID WHERE &quot;SHOW_ID&quot; = :SHOW_ID">
                         <DeleteParameters>
                             <asp:Parameter Name="SHOW_ID" Type="Decimal" />
                         </DeleteParameters>
@@ -59,27 +38,92 @@
                             <asp:Parameter Name="SHOW_ID" Type="Decimal" />
                         </UpdateParameters>
                     </asp:SqlDataSource>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
-                <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-                </p>
-            </section>
-        </div>
-    </main>
 
-</asp:Content>
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="SHOW_ID"
+                        DataSourceID="SqlDataSource1" AllowPaging="True"
+                        CssClass="table table-hover table-bordered align-middle" GridLines="None" PageSize="10">
+                        <Columns>
+                            <asp:BoundField DataField="SHOW_ID" HeaderText="ID" ReadOnly="True"
+                                SortExpression="SHOW_ID">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="SHOW_TIME" HeaderText="Start Time" SortExpression="SHOW_TIME"
+                                DataFormatString="{0:t}">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="SHOW_DATE" HeaderText="Date" SortExpression="SHOW_DATE"
+                                DataFormatString="{0:d}">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="MOVIE_ID" HeaderText="Movie Ref" SortExpression="MOVIE_ID">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="HALL_ID" HeaderText="Hall #" SortExpression="HALL_ID">
+                                <HeaderStyle CssClass="bg-light text-dark fw-bold small" />
+                            </asp:BoundField>
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True"
+                                ControlStyle-CssClass="btn btn-sm btn-outline-dark me-1" ButtonType="Button">
+                                <HeaderStyle CssClass="bg-light text-dark text-center" Width="180px" />
+                                <ItemStyle CssClass="text-center" />
+                            </asp:CommandField>
+                        </Columns>
+                        <PagerStyle CssClass="pagination-neutral" HorizontalAlign="Center" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-secondary text-center mt-3" role="alert">
+                                No scheduling records currently available.
+                            </div>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .pagination-neutral {
+                display: inline-block;
+                padding-left: 0;
+                margin: 20px 0;
+            }
+
+            .pagination-neutral table>tbody>tr>td {
+                display: inline;
+            }
+
+            .pagination-neutral table>tbody>tr>td>a,
+            .pagination-neutral table>tbody>tr>td>span {
+                position: relative;
+                float: left;
+                padding: 8px 14px;
+                margin-left: -1px;
+                line-height: 1.5;
+                color: #212529;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+                font-size: 0.9rem;
+            }
+
+            .pagination-neutral table>tbody>tr>td>span {
+                z-index: 3;
+                color: #fff;
+                background-color: #212529;
+                border-color: #212529;
+                cursor: default;
+            }
+
+            .pagination-neutral table>tbody>tr>td>a:hover {
+                color: #000;
+                background-color: #f8f9fa;
+                border-color: #dee2e6;
+            }
+
+            .table thead th {
+                border-top: 0;
+                border-bottom: 2px solid #dee2e6;
+            }
+
+            .btn-sm {
+                font-size: 0.82rem;
+            }
+        </style>
+    </asp:Content>
