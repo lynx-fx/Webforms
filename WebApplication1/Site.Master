@@ -60,6 +60,9 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/show">Shows</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/movies">Movies</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/theatercityhall">Theaters</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/complex/usersTicket">User's Ticket</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/complex/movieHall">Movies Hall</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/complex/performance">Hall Performance</a></li>
                     </ul>
                 </div>
             </div>
