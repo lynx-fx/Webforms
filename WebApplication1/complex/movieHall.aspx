@@ -3,69 +3,87 @@
 
     <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <div class="d-flex align-items-center mb-4 border-bottom pb-2">
-            <h2 class="text-dark m-0"><i class="bi bi-people me-2"></i> User's Ticket Directory</h2>
+            <h2 class="text-dark m-0"><i class="bi bi-building me-2"></i> Movie Hall & Show Directory</h2>
         </div>
 
         <div class="card shadow-sm border">
             <div class="card-body">
-                <p class="text-secondary mb-4 small">Manage system users, staff, and account details. Use the table
-                    controls to edit or remove entries.</p>
+                <p class="text-secondary mb-4 small">Browse theaters, halls, and show schedules. Select a theater from
+                    the dropdown to filter the results.</p>
 
                 <div class="table-responsive">
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>"
-                        DeleteCommand="DELETE FROM &quot;USERS&quot; WHERE &quot;USER_ID&quot; = :USER_ID"
-                        InsertCommand="INSERT INTO &quot;USERS&quot; (&quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_ADDRESS&quot;) VALUES (:USER_ID, :USER_NAME, :USER_ADDRESS)"
-                        ProviderName="<%$ ConnectionStrings:cw.ProviderName %>"
-                        SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_ADDRESS, b.BOOKING_ID, b.MOVIE_ID, b.BOOKING_DATE, b.BOOKING_TYPE, b.SHOW_ID FROM USERS u, BOOKING b WHERE b.USER_ID = u.USER_ID AND b.booking_date &gt;= ADD_MONTHS(SYSDATE, -6)"
-                        UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_ADDRESS&quot; = :USER_ADDRESS WHERE &quot;USER_ID&quot; = :USER_ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="USER_ID" Type="Decimal" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="USER_ID" Type="Decimal" />
-                            <asp:Parameter Name="USER_NAME" Type="String" />
-                            <asp:Parameter Name="USER_ADDRESS" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="USER_NAME" Type="String" />
-                            <asp:Parameter Name="USER_ADDRESS" Type="String" />
-                            <asp:Parameter Name="USER_ID" Type="Decimal" />
-                        </UpdateParameters>
+                        ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT 
+    th.THEATER_CITY_HALL_ID,
+    th.THEATER_CITY_HALL_NAME,
+    HALL.HALL_NAME,
+    s.SHOW_ID,
+    s.SHOW_TIME,
+    s.SHOW_DATE,
+    s.MOVIE_ID,
+    s.HALL_ID AS EXPR3,
+    s.PRICE_ID
+FROM THEATER_CITY_HALL th
+JOIN THEATER_CITY_HALL_HALL h 
+    ON th.THEATER_CITY_HALL_ID = h.THEATER_CITY_HALL_ID
+JOIN HALL 
+    ON h.HALL_ID = HALL.HALL_ID
+JOIN SHOW s 
+    ON HALL.HALL_ID = s.HALL_ID
+WHERE th.THEATER_CITY_HALL_ID = :THEATER_CITY_HALL_ID">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="DropDownList1" Name="THEATER_CITY_HALL_ID"
+                                PropertyName="SelectedValue" />
+                        </SelectParameters>
                     </asp:SqlDataSource>
 
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2"
-                        DataTextField="USER_NAME" DataValueField="USER_ID" AutoPostBack="True">
+                        DataTextField="THEATER_CITY_HALL_NAME" DataValueField="THEATER_CITY_HALL_ID"
+                        AutoPostBack="True">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>"
                         ProviderName="<%$ ConnectionStrings:cw.ProviderName %>"
-                        SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_ADDRESS, b.BOOKING_ID FROM USERS u, BOOKING b WHERE b.USER_ID = u.USER_ID AND b.booking_date &gt;= ADD_MONTHS(SYSDATE, -6)">
+                        SelectCommand="SELECT &quot;THEATER_CITY_HALL_NAME&quot;, &quot;THEATER_CITY_HALL_ID&quot; FROM &quot;THEATER_CITY_HALL&quot;"
+                        DeleteCommand="DELETE FROM &quot;THEATER_CITY_HALL&quot; WHERE &quot;THEATER_CITY_HALL_ID&quot; = :THEATER_CITY_HALL_ID"
+                        InsertCommand="INSERT INTO &quot;THEATER_CITY_HALL&quot; (&quot;THEATER_CITY_HALL_NAME&quot;, &quot;THEATER_CITY_HALL_ID&quot;) VALUES (:THEATER_CITY_HALL_NAME, :THEATER_CITY_HALL_ID)"
+                        UpdateCommand="UPDATE &quot;THEATER_CITY_HALL&quot; SET &quot;THEATER_CITY_HALL_NAME&quot; = :THEATER_CITY_HALL_NAME WHERE &quot;THEATER_CITY_HALL_ID&quot; = :THEATER_CITY_HALL_ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="THEATER_CITY_HALL_ID" Type="Decimal" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="THEATER_CITY_HALL_NAME" Type="String" />
+                            <asp:Parameter Name="THEATER_CITY_HALL_ID" Type="Decimal" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="THEATER_CITY_HALL_NAME" Type="String" />
+                            <asp:Parameter Name="THEATER_CITY_HALL_ID" Type="Decimal" />
+                        </UpdateParameters>
                     </asp:SqlDataSource>
 
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
-                        DataKeyNames="USER_ID,BOOKING_ID" DataSourceID="SqlDataSource1" AllowPaging="True"
+                        DataKeyNames="THEATER_CITY_HALL_ID,SHOW_ID" DataSourceID="SqlDataSource1" AllowPaging="True"
                         CssClass="table table-hover table-bordered align-middle" GridLines="None">
                         <Columns>
-                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True"
-                                SortExpression="USER_ID">
+                            <asp:BoundField DataField="THEATER_CITY_HALL_ID" HeaderText="THEATER_CITY_HALL_ID"
+                                ReadOnly="True" SortExpression="THEATER_CITY_HALL_ID">
                             </asp:BoundField>
-                            <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME">
+                            <asp:BoundField DataField="THEATER_CITY_HALL_NAME" HeaderText="THEATER_CITY_HALL_NAME"
+                                SortExpression="THEATER_CITY_HALL_NAME">
                             </asp:BoundField>
-                            <asp:BoundField DataField="USER_ADDRESS" HeaderText="USER_ADDRESS"
-                                SortExpression="USER_ADDRESS">
+                            <asp:BoundField DataField="HALL_NAME" HeaderText="HALL_NAME" SortExpression="HALL_NAME">
                             </asp:BoundField>
-                            <asp:BoundField DataField="BOOKING_ID" HeaderText="BOOKING_ID" ReadOnly="True"
-                                SortExpression="BOOKING_ID" />
+                            <asp:BoundField DataField="SHOW_ID" HeaderText="SHOW_ID" SortExpression="SHOW_ID"
+                                ReadOnly="True" />
+                            <asp:BoundField DataField="SHOW_TIME" HeaderText="SHOW_TIME" SortExpression="SHOW_TIME" />
+                            <asp:BoundField DataField="SHOW_DATE" HeaderText="SHOW_DATE" SortExpression="SHOW_DATE" />
                             <asp:BoundField DataField="MOVIE_ID" HeaderText="MOVIE_ID" SortExpression="MOVIE_ID" />
-                            <asp:BoundField DataField="BOOKING_DATE" HeaderText="BOOKING_DATE"
-                                SortExpression="BOOKING_DATE" />
-                            <asp:BoundField DataField="BOOKING_TYPE" HeaderText="BOOKING_TYPE"
-                                SortExpression="BOOKING_TYPE" />
-                            <asp:BoundField DataField="SHOW_ID" HeaderText="SHOW_ID" SortExpression="SHOW_ID" />
+                            <asp:BoundField DataField="EXPR3" HeaderText="EXPR3" SortExpression="EXPR3" />
+                            <asp:BoundField DataField="PRICE_ID" HeaderText="PRICE_ID" SortExpression="PRICE_ID" />
                         </Columns>
                         <PagerStyle CssClass="pagination-neutral" HorizontalAlign="Center" />
                         <EmptyDataTemplate>
                             <div class="alert alert-secondary text-center mt-3" role="alert">
-                                No user records currently available.
+                                No theater or show records currently available for the selected hall.
                             </div>
                         </EmptyDataTemplate>
                     </asp:GridView>
