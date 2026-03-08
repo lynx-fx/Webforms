@@ -16,7 +16,7 @@
                         <h5 class="card-title fw-semibold">User Directory</h5>
                         <p class="card-text text-muted mb-4 small">Manage registered administrators, staff, and customer
                             accounts.</p>
-                        <a href="user.aspx" class="btn btn-outline-dark px-4 rounded-0">Manage Users</a>
+                        <a href="/basic/user.aspx" class="btn btn-outline-dark px-4 rounded-0">Manage Users</a>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <h5 class="card-title fw-semibold">Ticketing System</h5>
                         <p class="card-text text-muted mb-4 small">Oversee active ticket allocations, booking
                             references, and limits.</p>
-                        <a href="ticket.aspx" class="btn btn-outline-dark px-4 rounded-0">View Tickets</a>
+                        <a href="/basic/ticket.aspx" class="btn btn-outline-dark px-4 rounded-0">View Tickets</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <h5 class="card-title fw-semibold">Show Scheduling</h5>
                         <p class="card-text text-muted mb-4 small">Configure movie timings across designated theater
                             halls.</p>
-                        <a href="show.aspx" class="btn btn-outline-dark px-4 rounded-0">Manage Shows</a>
+                        <a href="/basic/show.aspx" class="btn btn-outline-dark px-4 rounded-0">Manage Shows</a>
                     </div>
                 </div>
             </div>

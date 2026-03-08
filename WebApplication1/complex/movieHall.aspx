@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="User Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="movieHall.aspx.cs" Inherits="WebApplication1.User" %>
+    CodeBehind="movieHall.aspx.cs" Inherits="WebApplication1.MovieHall" %>
 
     <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <div class="d-flex align-items-center mb-4 border-bottom pb-2">
@@ -33,12 +33,16 @@
                         </UpdateParameters>
                     </asp:SqlDataSource>
 
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" AutoPostBack="True">
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2"
+                        DataTextField="USER_NAME" DataValueField="USER_ID" AutoPostBack="True">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>" ProviderName="<%$ ConnectionStrings:cw.ProviderName %>" SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_ADDRESS, b.BOOKING_ID FROM USERS u, BOOKING b WHERE b.USER_ID = u.USER_ID AND b.booking_date &gt;= ADD_MONTHS(SYSDATE, -6)"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:cw %>"
+                        ProviderName="<%$ ConnectionStrings:cw.ProviderName %>"
+                        SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_ADDRESS, b.BOOKING_ID FROM USERS u, BOOKING b WHERE b.USER_ID = u.USER_ID AND b.booking_date &gt;= ADD_MONTHS(SYSDATE, -6)">
+                    </asp:SqlDataSource>
 
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID,BOOKING_ID"
-                        DataSourceID="SqlDataSource1" AllowPaging="True"
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
+                        DataKeyNames="USER_ID,BOOKING_ID" DataSourceID="SqlDataSource1" AllowPaging="True"
                         CssClass="table table-hover table-bordered align-middle" GridLines="None">
                         <Columns>
                             <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True"
@@ -49,10 +53,13 @@
                             <asp:BoundField DataField="USER_ADDRESS" HeaderText="USER_ADDRESS"
                                 SortExpression="USER_ADDRESS">
                             </asp:BoundField>
-                            <asp:BoundField DataField="BOOKING_ID" HeaderText="BOOKING_ID" ReadOnly="True" SortExpression="BOOKING_ID" />
+                            <asp:BoundField DataField="BOOKING_ID" HeaderText="BOOKING_ID" ReadOnly="True"
+                                SortExpression="BOOKING_ID" />
                             <asp:BoundField DataField="MOVIE_ID" HeaderText="MOVIE_ID" SortExpression="MOVIE_ID" />
-                            <asp:BoundField DataField="BOOKING_DATE" HeaderText="BOOKING_DATE" SortExpression="BOOKING_DATE" />
-                            <asp:BoundField DataField="BOOKING_TYPE" HeaderText="BOOKING_TYPE" SortExpression="BOOKING_TYPE" />
+                            <asp:BoundField DataField="BOOKING_DATE" HeaderText="BOOKING_DATE"
+                                SortExpression="BOOKING_DATE" />
+                            <asp:BoundField DataField="BOOKING_TYPE" HeaderText="BOOKING_TYPE"
+                                SortExpression="BOOKING_TYPE" />
                             <asp:BoundField DataField="SHOW_ID" HeaderText="SHOW_ID" SortExpression="SHOW_ID" />
                         </Columns>
                         <PagerStyle CssClass="pagination-neutral" HorizontalAlign="Center" />

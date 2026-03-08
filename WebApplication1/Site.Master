@@ -55,11 +55,11 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/user">Users</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ticket">Tickets</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/show">Shows</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/movies">Movies</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/theatercityhall">Theaters</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/basic/user">Users</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/basic/ticket">Tickets</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/basic/show">Shows</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/basic/movies">Movies</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/basic/theatercityhall">Theaters</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/complex/usersTicket">User's Ticket</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/complex/movieHall">Movies Hall</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/complex/performance">Hall Performance</a></li>

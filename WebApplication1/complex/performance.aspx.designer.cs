@@ -11,7 +11,7 @@ namespace WebApplication1
 {
 
 
-    public partial class User
+    public partial class Performance
     {
 
         /// <summary>
