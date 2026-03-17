@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Shows Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Shows Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="show.aspx.cs" Inherits="WebApplication1.show" %>
 
     <script runat="server">
@@ -55,10 +55,10 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 501" />
                                     <asp:RequiredFieldValidator ID="rfvShowId" runat="server"
                                         ControlToValidate="SHOW_IDTextBox" ErrorMessage="Required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddShowGroup" />
                                     <asp:CompareValidator ID="cvShowId" runat="server"
                                         ControlToValidate="SHOW_IDTextBox" Operator="DataTypeCheck" Type="Integer"
-                                        ErrorMessage="Numeric" Display="Dynamic" CssClass="text-danger smaller" />
+                                        ErrorMessage="Numeric" Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddShowGroup" />
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label small fw-bold text-secondary">Movie ID</label>
@@ -66,7 +66,7 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 101" />
                                     <asp:RequiredFieldValidator ID="rfvMovieId" runat="server"
                                         ControlToValidate="MOVIE_IDTextBox" ErrorMessage="Required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddShowGroup" />
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label small fw-bold text-secondary">Hall ID</label>
@@ -74,7 +74,7 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 1" />
                                     <asp:RequiredFieldValidator ID="rfvHallId" runat="server"
                                         ControlToValidate="HALL_IDTextBox" ErrorMessage="Required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddShowGroup" />
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label small fw-bold text-secondary">Date & Time</label>
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="col-12 mt-3 text-end text-md-start">
                                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True"
-                                        CommandName="Insert"
+                                        CommandName="Insert" ValidationGroup="AddShowGroup"
                                         Text='<i class="bi bi-calendar-plus me-1"></i> Schedule Show'
                                         CssClass="btn btn-dark btn-sm px-4" />
                                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False"

@@ -35,10 +35,10 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 101" />
                                     <asp:RequiredFieldValidator ID="rfvID" runat="server"
                                         ControlToValidate="USER_IDTextBox" ErrorMessage="ID is required"
-                                        Display="Dynamic" CssClass="text-danger smaller" />
+                                        Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddUserGroup" />
                                     <asp:CompareValidator ID="cvID" runat="server" ControlToValidate="USER_IDTextBox"
                                         Operator="DataTypeCheck" Type="Integer" ErrorMessage="Must be numeric"
-                                        Display="Dynamic" CssClass="text-danger smaller" />
+                                        Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddUserGroup" />
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label small fw-bold text-secondary">Full Name</label>
@@ -46,7 +46,7 @@
                                         CssClass="form-control form-control-sm" placeholder="Enter name" />
                                     <asp:RequiredFieldValidator ID="rfvName" runat="server"
                                         ControlToValidate="USER_NAMETextBox" ErrorMessage="Name is required"
-                                        Display="Dynamic" CssClass="text-danger smaller" />
+                                        Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddUserGroup" />
                                 </div>
                                 <div class="col-md-5">
                                     <label class="form-label small fw-bold text-secondary">Address</label>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-12 mt-3 text-end text-md-start">
                                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True"
-                                        CommandName="Insert" Text='<i class="bi bi-person-plus me-1"></i> Add User'
+                                        CommandName="Insert" ValidationGroup="AddUserGroup" Text='<i class="bi bi-person-plus me-1"></i> Add User'
                                         CssClass="btn btn-dark btn-sm px-4" />
                                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False"
                                         CommandName="Cancel" Text="Clear"

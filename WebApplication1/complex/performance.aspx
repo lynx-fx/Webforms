@@ -78,7 +78,7 @@ ORDER BY occupancy_percentage DESC"
                     </asp:SqlDataSource>
 
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True"
-                        CssClass="table table-hover table-bordered align-middle" GridLines="None">
+                        CssClass="table table-hover table-bordered align-middle" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3">
                         <Columns>
                             <asp:BoundField DataField="MOVIE_TITLE" HeaderText="MOVIE_TITLE"
                                 SortExpression="MOVIE_TITLE">

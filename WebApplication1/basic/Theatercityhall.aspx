@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Theater & City Hall Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Theater & City Hall Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Theatercityhall.aspx.cs" Inherits="WebApplication1.Theatercityhall" %>
 
 
@@ -37,11 +37,11 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 1" />
                                     <asp:RequiredFieldValidator ID="rfvVenueId" runat="server"
                                         ControlToValidate="THEATER_CITY_HALL_IDTextBox" ErrorMessage="Required"
-                                        Display="Dynamic" CssClass="text-danger smaller" />
+                                        Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddVenueGroup" />
                                     <asp:CompareValidator ID="cvVenueId" runat="server"
                                         ControlToValidate="THEATER_CITY_HALL_IDTextBox" Operator="DataTypeCheck"
                                         Type="Integer" ErrorMessage="Numeric" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddVenueGroup" />
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label small fw-bold text-secondary">Company Ref</label>
@@ -50,7 +50,7 @@
                                         placeholder="e.g. 10" />
                                     <asp:RequiredFieldValidator ID="rfvCompanyId" runat="server"
                                         ControlToValidate="THEATER_COMPANY_IDTextBox" ErrorMessage="Required"
-                                        Display="Dynamic" CssClass="text-danger smaller" />
+                                        Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddVenueGroup" />
                                 </div>
                                 <div class="col-md-8">
                                     <label class="form-label small fw-bold text-secondary">Branch Name /
@@ -62,11 +62,11 @@
                                     <asp:RequiredFieldValidator ID="rfvVenueName" runat="server"
                                         ControlToValidate="THEATER_CITY_HALL_NAMETextBox"
                                         ErrorMessage="Name is required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddVenueGroup" />
                                 </div>
                                 <div class="col-12 mt-3 text-end text-md-start">
                                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True"
-                                        CommandName="Insert"
+                                        CommandName="Insert" ValidationGroup="AddVenueGroup"
                                         Text='<i class="bi bi-building-add me-1"></i> Register Venue'
                                         CssClass="btn btn-dark btn-sm px-4" />
                                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False"

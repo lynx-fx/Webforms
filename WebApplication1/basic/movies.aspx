@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Movies Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Movies Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="movies.aspx.cs" Inherits="WebApplication1.movies" %>
 
     <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -34,10 +34,10 @@
                                         CssClass="form-control form-control-sm" placeholder="ID" />
                                     <asp:RequiredFieldValidator ID="rfvID" runat="server"
                                         ControlToValidate="MOVIE_IDTextBox" ErrorMessage="ID Required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddMovieGroup" />
                                     <asp:CompareValidator ID="cvID" runat="server" ControlToValidate="MOVIE_IDTextBox"
                                         Operator="DataTypeCheck" Type="Integer" ErrorMessage="Numeric" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddMovieGroup" />
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label small fw-bold text-secondary">Movie Title</label>
@@ -46,7 +46,7 @@
                                         placeholder="Enter title" />
                                     <asp:RequiredFieldValidator ID="rfvTitle" runat="server"
                                         ControlToValidate="MOVIE_TITLETextBox" ErrorMessage="Title Required"
-                                        Display="Dynamic" CssClass="text-danger smaller" />
+                                        Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddMovieGroup" />
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label small fw-bold text-secondary">Duration (min)</label>
@@ -66,7 +66,7 @@
                                 <div class="col-12 mt-3 text-end text-md-start">
                                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True"
                                         CommandName="Insert" Text='<i class="bi bi-plus-square me-1"></i> Add Movie'
-                                        CssClass="btn btn-dark btn-sm px-4" />
+                                        CssClass="btn btn-dark btn-sm px-4" ValidationGroup="AddMovieGroup" />
                                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False"
                                         CommandName="Cancel" Text="Clear"
                                         CssClass="btn btn-link btn-sm text-decoration-none text-secondary" />

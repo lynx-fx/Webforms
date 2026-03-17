@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Tickets Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="Tickets Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Ticket.aspx.cs" Inherits="WebApplication1.Ticket" %>
 
     <script runat="server">
@@ -55,10 +55,10 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 9001" />
                                     <asp:RequiredFieldValidator ID="rfvTicketId" runat="server"
                                         ControlToValidate="TICKET_IDTextBox" ErrorMessage="Required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddTicketGroup" />
                                     <asp:CompareValidator ID="cvTicketId" runat="server"
                                         ControlToValidate="TICKET_IDTextBox" Operator="DataTypeCheck" Type="Integer"
-                                        ErrorMessage="Numeric" Display="Dynamic" CssClass="text-danger smaller" />
+                                        ErrorMessage="Numeric" Display="Dynamic" CssClass="text-danger smaller" ValidationGroup="AddTicketGroup" />
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label small fw-bold text-secondary">Booking Ref #</label>
@@ -66,7 +66,7 @@
                                         CssClass="form-control form-control-sm" placeholder="e.g. 8001" />
                                     <asp:RequiredFieldValidator ID="rfvBookingId" runat="server"
                                         ControlToValidate="BOOKING_IDTextBox" ErrorMessage="Required" Display="Dynamic"
-                                        CssClass="text-danger smaller" />
+                                        CssClass="text-danger smaller" ValidationGroup="AddTicketGroup" />
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label small fw-bold text-secondary">Status</label>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-12 mt-3 text-end text-md-start">
                                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True"
-                                        CommandName="Insert" Text='<i class="bi bi-printer me-1"></i> Issue Ticket'
+                                        CommandName="Insert" ValidationGroup="AddTicketGroup" Text='<i class="bi bi-printer me-1"></i> Issue Ticket'
                                         CssClass="btn btn-dark btn-sm px-4" />
                                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False"
                                         CommandName="Cancel" Text="Clear"
